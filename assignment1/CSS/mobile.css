@@ -1,0 +1,22 @@
+.l-heading {
+    font-size: 40px;
+}
+
+#header h1,
+#header img {
+    float: none;
+    margin: auto;
+    text-align: center;
+}
+
+.main-container {
+    margin-top: 0px;
+    margin-bottom: 0px;
+
+}
+
+.box {
+    float: none;
+    width: 95%;
+    margin-top: 20px;
+}
