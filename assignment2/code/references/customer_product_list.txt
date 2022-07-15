@@ -1,0 +1,82 @@
+Customers list
+
+{
+
+    "username": "khyatik",
+    "password": "rfg"
+}
+
+
+{
+
+    "username": "shreya",
+    "password": "abc"
+}
+
+
+{
+
+    "username": "krishna",
+    "password": "def"
+}
+
+{
+
+    "username": "kanha",
+    "password": "ghi"
+}
+
+{
+
+    "username": "sakshee",
+    "password": "ght"
+}
+
+Products List
+{
+    "cust_name":"shreya",
+    "product_id":101,
+    "prod_name":"Socks",
+    "prod_des":"Two pair of socks",
+    "prod_cost":50
+}
+
+{
+    "cust_name":"krishna",
+    "product_id":102,
+    "prod_name":"Top",
+    "prod_des":"Blue coloured XL Top",
+    "prod_cost":1040
+}
+
+{
+    "cust_name":"khyati",
+    "product_id":103,
+    "prod_name":"Goggles",
+    "prod_des":"Black colored goggles",
+    "prod_cost":500
+}
+
+{
+    "cust_name":"shreya",
+    "product_id":104,
+    "prod_name":"Jeans",
+    "prod_des":"Two pair of jeans",
+    "prod_cost":3000
+}
+
+{
+    "cust_name":"sakshee",
+    "product_id":105,
+    "prod_name":"Dress",
+    "prod_des":"Pink and white frock",
+    "prod_cost":1500
+}
+
+{
+    "cust_name":"shreya",
+    "product_id":106,
+    "prod_name":"Formals",
+    "prod_des":"Formals pant and shirt",
+    "prod_cost":5000
+}
