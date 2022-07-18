@@ -5,6 +5,19 @@ from models.customer_model import CustomerModel
 class CustomerSignIn(Resource):
     parser=reqparse.RequestParser()
     parser.add_argument(
+        'firstname',
+        type=str,
+        required=True,
+        help='This field cannot be lest blank'
+        )
+    parser.add_argument(
+        'lastname',
+        type=str,
+        required=True,
+        help='This field cannot be lest blank'
+        )
+
+    parser.add_argument(
         'username',
         type=str,
         required=True,
@@ -21,11 +34,13 @@ class CustomerSignIn(Resource):
 
         data=CustomerSignIn.parser.parse_args()
 
-        if CustomerModel.find_by_username(data['username']):
-            return {"mesaage":"A user with given username already exists."} ,400
+        user=CustomerModel.find_by_username(data['username'])
+
+        if user:
+            return {"mesaage":f"A user with given username already exists having user id {user.id}"} ,400
 
         user=CustomerModel(**data)
 
         user.save_to_db()
 
-        return {"message":f"User created successfully"} ,201
+        return {"message":f"User created successfully with user id {user.id}"} ,201

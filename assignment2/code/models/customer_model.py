@@ -2,12 +2,16 @@ from db import db
 
 
 class CustomerModel(db.Model):
-    __tablename__ ='valid_customers'
+    __tablename__ ='customers'
     id=db.Column(db.Integer, primary_key=True)
+    firstname=db.Column(db.String(80))
+    lastname=db.Column(db.String(80))
     username=db.Column(db.String(80))
     password=db.Column(db.String(80))
 
-    def __init__(self, username, password):
+    def __init__(self,lastname,firstname, username, password):
+        self.firstname=firstname
+        self.lastname=lastname
         self.username=username
         self.password=password
 
