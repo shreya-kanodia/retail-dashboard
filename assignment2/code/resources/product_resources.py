@@ -1,9 +1,12 @@
 
+from flask_jwt import jwt_required
 from flask_restful import Resource
 from models.product_model import ProductModel
 
 
 class ProductList(Resource):
+
+    @jwt_required()
 
     def get(self):
         prod1 = ProductModel(101, 'A wide leg jeans')

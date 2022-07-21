@@ -1,8 +1,8 @@
 import os
-from datetime import timedelta
+from datetime import date, timedelta
 
 from flask import Flask, jsonify
-from flask_jwt import JWT
+from flask_jwt import JWT, jwt_required
 from flask_restful import Api
 
 from db import db
@@ -41,14 +41,16 @@ api.add_resource(Sales,'/purchase')
 
 # api endpoint for total sales
 @app.route('/totalsales')
+@jwt_required()
 def total_sales():
-    return jsonify({"message": f"Total number of sales for the day is - {len(SalesModel.query.filter(SalesModel.sale_amount != 0).all())}."})
+    return jsonify({"message": f"Total number of sales for the day is - {len(SalesModel.find_by_date(date.today()).filter(SalesModel.sale_amount != 0).all())}."})
 
 
 # api end point for unique visitors
 @app.route('/uniquevisitors')
+@jwt_required()
 def unique_visitors():
-    visitors = SalesModel.query.all()
+    visitors = SalesModel.find_by_date(date.today()).all()
     unique_visitor = {}
     for object in visitors:
         if object.user_id in unique_visitor.keys():
@@ -60,8 +62,9 @@ def unique_visitors():
 
 # api endpoint for avg_sales_per_customer
 @app.route('/avg_sales_per_customer')
+@jwt_required()
 def avg_sales_per_customer():
-    visitors = SalesModel.query.all()
+    visitors = SalesModel.find_by_date(date.today()).all()
     unique_visitor = {}
     total_sales=[]
     for object in visitors:

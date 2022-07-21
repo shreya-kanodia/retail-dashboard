@@ -1,6 +1,7 @@
 import imp
 from datetime import date
 
+from flask_jwt import jwt_required
 from flask_restful import Resource, reqparse
 from models.customer_model import CustomerModel
 from models.sales_model import SalesModel
@@ -35,6 +36,7 @@ class Sales(Resource):
         help='This can be left blank'
         )
 
+    @jwt_required()
     def post(self):
 
         data=Sales.parser.parse_args()
@@ -49,9 +51,8 @@ class Sales(Resource):
         return {"message":"Sale Done successfully "} ,201
 
 class PurchaseList(Resource):
+
+    @jwt_required()
     def get(self):
-        return {"sold_items": [x.json() for x in SalesModel.query.filter(SalesModel.sale_amount != 0).all()]}
+        return {"sold_items": [x.json() for x in SalesModel.find_by_date(date.today()).filter(SalesModel.sale_amount != 0).all()]}
 
-
-
-# func.count(distinct(User.name)

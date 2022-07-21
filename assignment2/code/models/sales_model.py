@@ -20,6 +20,11 @@ class SalesModel(db.Model):
     def json(self):
         return {"user_id":self.user_id,"price":self.sale_amount}
 
+    @classmethod
+    def find_by_date(cls,date):
+        return cls.query.filter_by(sale_date=date)
+
+
     def save_to_db(self):
         db.session.add(self)
         db.session.commit()
