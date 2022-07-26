@@ -7,9 +7,15 @@ from flask_restful import Api
 
 from db import db
 from models.sales_model import SalesModel
-from resources.customer_resource import CustomerSignIn
+from resources.customer_resource import CustomerRegister
 from resources.product_resources import ProductList
-from resources.sales_resource import PurchaseList, Sales
+from resources.sales_resource import (
+    Average_sales_per_customer,
+    PurchaseList,
+    Sales,
+    TotalSales,
+    UniqueVisitors,
+)
 from security import authenticate, identity
 
 app=Flask(__name__)
@@ -27,7 +33,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] =  os.environ.get('DATABASE_URI', 'sqlite:
 
 
 # api endpoint for customer signing in the site for the first time
-api.add_resource(CustomerSignIn,'/sign_in')
+api.add_resource(CustomerRegister,'/register')
 
 
 # customer login and check for valid customer
@@ -39,42 +45,18 @@ jwt=JWT(app, authenticate, identity)
 api.add_resource(Sales,'/purchase')
 
 
+
 # api endpoint for total sales
-@app.route('/totalsales')
-@jwt_required()
-def total_sales():
-    return jsonify({"message": f"Total number of sales for the day is - {len(SalesModel.find_by_date(date.today()).filter(SalesModel.sale_amount != 0).all())}."})
+api.add_resource(TotalSales,'/totalsales')
 
 
 # api end point for unique visitors
-@app.route('/uniquevisitors')
-@jwt_required()
-def unique_visitors():
-    visitors = SalesModel.find_by_date(date.today()).all()
-    unique_visitor = {}
-    for object in visitors:
-        if object.user_id in unique_visitor.keys():
-            unique_visitor[object.user_id]+=1
-        else:
-            unique_visitor[object.user_id] = 1
-    return jsonify({"message":f"Total no. of unique visitors in the day are - {len(unique_visitor)}"})
+api.add_resource(UniqueVisitors,'/uniquevisitors')
+
 
 
 # api endpoint for avg_sales_per_customer
-@app.route('/avg_sales_per_customer')
-@jwt_required()
-def avg_sales_per_customer():
-    visitors = SalesModel.find_by_date(date.today()).all()
-    unique_visitor = {}
-    total_sales=[]
-    for object in visitors:
-        total_sales.append(object.sale_amount)
-        if object.user_id in unique_visitor.keys():
-            unique_visitor[object.user_id]+=1
-        else:
-            unique_visitor[object.user_id] = 1
-    var=sum(total_sales)/len(unique_visitor)
-    return jsonify({"message": f"Average Sales Per Customer is {var}."})
+api.add_resource(Average_sales_per_customer,'/avg_sales_per_customer')
 
 
 # api endpoint for list_of_daily_displays

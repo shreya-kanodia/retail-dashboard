@@ -3,7 +3,7 @@ from flask_restful import Resource, reqparse
 from models.customer_model import CustomerModel
 
 
-class CustomerSignIn(Resource):
+class CustomerRegister(Resource):
     parser=reqparse.RequestParser()
     parser.add_argument(
         'firstname',
@@ -31,9 +31,11 @@ class CustomerSignIn(Resource):
         help='This field cannot be lest blank'
         )
 
+
+
     def post(self):
 
-        data=CustomerSignIn.parser.parse_args()
+        data=CustomerRegister.parser.parse_args()
 
         user=CustomerModel.find_by_username(data['username'])
 
