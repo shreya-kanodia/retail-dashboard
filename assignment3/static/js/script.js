@@ -68,6 +68,7 @@ const getSaleDetails = async () => {
     if (sales.status !== 200) {
         return sales.status;
     }
+    const data = await sales.json();
 
     for (let sale of data.sold_items) {
         saleTable.innerHTML += `
