@@ -1,5 +1,7 @@
 from db import db
 
+from models.product_model import ProductModel
+
 
 class SalesModel(db.Model):
     __tablename__ ='sales'
@@ -17,9 +19,12 @@ class SalesModel(db.Model):
         # login time implementation
         # logout time implementation
 
-    def json(self):
-        return {"user_id":self.user_id,"price":self.sale_amount}
+        #
 
+
+    def json(self):
+        result= db.session.query(SalesModel.product_id,ProductModel.prod_des).filter(SalesModel.product_id == ProductModel.product_id).all()
+        return {"product_id":self.product_id,"user_id":self.user_id, "sale_amount":self.sale_amount ,"product_des":[x.prod_des for x in result if x.product_id==self.product_id][0] }
     @classmethod
     def find_by_date(cls,date):
         return cls.query.filter_by(sale_date=date)

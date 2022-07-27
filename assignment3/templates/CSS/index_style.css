@@ -1,0 +1,156 @@
+/* Reset */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Main Styling */
+/* Core Styling */
+/* Body, Links, Paragraphs etc. */
+
+
+html,
+body {
+    font-family: 'Raleway', sans-serif;
+    line-height: 1.7em;
+
+}
+
+/* Utility Classes */
+
+.container {
+    margin: auto;
+    max-width: 1500px;
+    overflow: auto;
+    padding: 0 20px;
+}
+
+#main-content {
+    margin: auto;
+    max-width: 1500px;
+    overflow: auto;
+    padding: 20px 20px;
+    background: rgb(240, 235, 235);
+    height: 100vh;
+}
+
+.main-container {
+    margin: auto;
+    max-width: 1300px;
+    overflow: auto;
+    margin-top: 80px;
+    margin-bottom: 80px;
+
+}
+
+.l-heading {
+    font-size: 70px;
+    line-height: 1.2;
+    margin: 10px 20px;
+}
+
+.clr {
+    clear: both;
+}
+
+/* Element Wise Styling */
+
+/* Header */
+
+
+
+#header h1 {
+    float: left;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#header img {
+    float: right;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 50%;
+    display: block;
+    width: 100px;
+    height: 150px;
+}
+
+#dashboard-logo img {
+    width: 80px;
+    height: 80px;
+    border-radius: 5px;
+    float: left;
+    display: block;
+    padding-right: 10px;
+
+}
+
+#dashboard-logo h1 {
+    margin: 30px 10px;
+    line-height: 2.5;
+}
+
+.box {
+    float: left;
+    width: 31.7%;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 20px;
+    color: #fff;
+}
+
+.box-1 {
+    background: url(../img/box1.jpg);
+}
+
+.box-2 {
+    background: url(../img/box2.jpg);
+}
+
+.box-3 {
+    background: url(../img/box3.jpg);
+}
+
+.box i {
+    margin-bottom: 20px;
+}
+
+#stats {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#tabular-content {
+    margin-top: 40px;
+    background: #fff;
+}
+
+.container-table {
+    padding: 1rem 3rem;
+    overflow-x: auto;
+}
+
+.container-table table {
+    width: 100%;
+    text-align: left;
+}
+
+.container-table table tr th,
+.container-table table tr td {
+    padding: 1rem;
+    border-bottom: #ddd dotted 2px;
+}
+
+.btn {
+    display: inline-block;
+    font-size: 18px;
+    color: #fff;
+    background: #333;
+    padding: 13px 20px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+
+}

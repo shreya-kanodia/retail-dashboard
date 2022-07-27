@@ -4,7 +4,6 @@ from werkzeug.security import safe_str_cmp
 
 from models.customer_model import CustomerModel
 from models.sales_model import SalesModel
-from resources.customer_resource import CustomerRegister
 
 
 def authenticate(username,password):

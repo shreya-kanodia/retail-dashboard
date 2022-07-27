@@ -2,12 +2,13 @@ import os
 from datetime import date, timedelta
 
 from flask import Flask, jsonify
-from flask_jwt import JWT, jwt_required
+from flask_cors import CORS
+from flask_jwt_extended import JWTManager
 from flask_restful import Api
 
 from db import db
 from models.sales_model import SalesModel
-from resources.customer_resource import CustomerRegister
+from resources.customer_resource import CustomerRegister, UserLogin
 from resources.product_resources import ProductList
 from resources.sales_resource import (
     Average_sales_per_customer,
@@ -20,30 +21,29 @@ from security import authenticate, identity
 
 app=Flask(__name__)
 app.secret_key= '1234'
+CORS(app)
 api=Api(app)
 
 @app.before_first_request
 def create_tables():
     db.create_all()
 
+jwt=JWTManager(app)
 
 app.config['JWT_EXPIRATION_DELTA'] = timedelta(seconds=1800)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']= False
 app.config['SQLALCHEMY_DATABASE_URI'] =  os.environ.get('DATABASE_URI', 'sqlite:///data.db')
-
 
 # api endpoint for customer signing in the site for the first time
 api.add_resource(CustomerRegister,'/register')
 
 
 # customer login and check for valid customer
-app.config['JWT_AUTH_URL_RULE'] = '/log_in'
-jwt=JWT(app, authenticate, identity)
+api.add_resource(UserLogin,'/log_in')
 
 
 # api for product purchase
 api.add_resource(Sales,'/purchase')
-
 
 
 # api endpoint for total sales
