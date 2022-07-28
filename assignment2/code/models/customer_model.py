@@ -9,7 +9,7 @@ class CustomerModel(db.Model):
     username=db.Column(db.String(80))
     password=db.Column(db.String(80))
 
-    def __init__(self,lastname,firstname, username, password):
+    def __init__(self,firstname,lastname,username, password):
         self.firstname=firstname
         self.lastname=lastname
         self.username=username
