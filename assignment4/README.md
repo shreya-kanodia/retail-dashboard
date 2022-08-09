@@ -2,7 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.0.4
 
-##Installization
+## Installization
 Download the zip file for project 
 Move to assignment 4 folder and run steps below
 
@@ -10,7 +10,7 @@ Move to assignment 4 folder and run steps below
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-##Preview
+## Preview
 
 Home Page
 ![image](https://user-images.githubusercontent.com/98578568/183594042-a19360a3-dc79-4636-a09b-a4cbee672beb.png)
