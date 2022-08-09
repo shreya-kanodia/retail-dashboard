@@ -1,27 +1,27 @@
 # Assignment4
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.0.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.0.4
+
+##Installization
+Download the zip file for project 
+Move to assignment 4 folder and run steps below
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+##Preview
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Home Page
+![image](https://user-images.githubusercontent.com/98578568/183594042-a19360a3-dc79-4636-a09b-a4cbee672beb.png)
 
-## Build
+Register Page
+![image](https://user-images.githubusercontent.com/98578568/183594214-d8fcbc67-1d49-4248-864e-7cfe556d0528.png)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Login Page
+![image](https://user-images.githubusercontent.com/98578568/183594346-29dfe24f-abd3-47d3-bc10-0bbf3597c2e8.png)
 
-## Running unit tests
+Dashboard Page
+![image](https://user-images.githubusercontent.com/98578568/183594524-a30795a4-db3c-4c12-9592-c6cb4f7e2c7f.png)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
