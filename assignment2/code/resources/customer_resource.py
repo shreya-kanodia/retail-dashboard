@@ -1,6 +1,6 @@
 from datetime import date
 from hmac import compare_digest
-
+from flask_cors import cross_origin
 from flask import make_response, render_template
 from flask_jwt_extended import create_access_token, jwt_required
 from flask_restful import Resource, reqparse
@@ -42,7 +42,6 @@ class CustomerRegister(Resource):
     def post(self):
 
         data=CustomerRegister.parser.parse_args()
-
         user=CustomerModel.find_by_username(data['username'])
 
         if user:
@@ -54,8 +53,7 @@ class CustomerRegister(Resource):
 
         return {"message":f"User created successfully with user id {user.id}"} ,201
 
-    def get(self):
-        return make_response(render_template('register.html'))
+
 
 class UserLogin(Resource):
     parser = reqparse.RequestParser()
@@ -72,12 +70,8 @@ class UserLogin(Resource):
         help="Required: password"
     )
 
-    # def get(self):
-    #     return make_response(render_template('login.html'))
-
-    @classmethod
-    def post(cls):
-        data = cls.parser.parse_args()
+    def post(self):
+        data = UserLogin.parser.parse_args()
 
         user = CustomerModel.find_by_username(data['username'])
 
