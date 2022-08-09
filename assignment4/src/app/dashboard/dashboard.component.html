@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Welcome to our Retail Fashion Store">
+    <meta name="keywords" content="fashion, store">
+    <script src="https://kit.fontawesome.com/371c8b79ce.js" crossorigin="anonymous"></script>
+    <title>Retail Fashion Store</title>
+</head>
+
+<body>
+    <header>
+
+        <div id="header">
+            <div class="container">
+                <h1 class="l-heading">Retail Fashion Store</h1>
+            </div>
+        </div>
+
+        <div id="main-content">
+            <div class="main-container">
+                <div id="dashboard-logo">
+                    <h1>Dashboard</h1>
+                </div>
+
+                <section id="stats">
+                    <div class="box box-1">
+                        <i class="fa fa-line-chart fa-3x"></i>
+                        <br>
+                        <h2>Total Sales</h2>
+                        <br>
+                        <h1 id="ts" >{{totalsales}}</h1>
+                        <br><br>
+                        <h2>Increased by 10%</h2>
+                    </div>
+                    <div class="box box-2">
+                        <i class="fa fa-database fa-3x"></i>
+                        <br>
+                        <h2>Average Sales</h2>
+                        <br>
+                        <h1 id="avg_sale" >{{averagesales}}</h1>
+                        <br><br>
+                        <h2>Increased by 30%</h2>
+                    </div>
+                    <div class="box box-3">
+                        <i class="fa fa-flag fa-3x"></i>
+                        <br>
+                        <h2>Unique visitors</h2>
+                        <br>
+                        <h1 id="uv" >{{uniquevisitors}}</h1>
+                        <br><br>
+                        <h2>Increased by 80%</h2>
+                    </div>
+                </section>
+
+                <div class="clr"></div>
+
+                <section id="tabular-content">
+                    <div class="container">
+                        <h2>Product Table</h2>
+                        <div class="container-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Product ID</th>
+                                        <th>User ID</th>
+                                        <th>Description</th>
+                                        <th>Sales Amount</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr *ngFor="let i of sold_items">
+                                        <td>{{i.product_id}}</td>
+                                        <td>{{i.user_id}}</td>
+                                        <td>{{i.product_des}}</td>
+                                        <td>{{i.sale_amount}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+                <a class="btn" (click)="OnLogOut()">Log Out</a>
+            </div>
+        </div>
+    </header>
+</body>
+
+</html>

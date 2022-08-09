@@ -1,7 +1,7 @@
 import os
-from datetime import date, timedelta
+from datetime import timedelta
 
-from flask import Flask, jsonify
+from flask import Flask
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
 from flask_restful import Api
@@ -39,7 +39,7 @@ api.add_resource(CustomerRegister,'/register')
 
 
 # customer login and check for valid customer
-api.add_resource(UserLogin,'/log_in')
+api.add_resource(UserLogin,'/login')
 
 
 # api for product purchase
