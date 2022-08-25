@@ -1,0 +1,175 @@
+<div class="flex flex-col flex-auto w-full">
+  <div class="flex flex-wrap w-full max-w-screen-xl mx-auto p-6 md:p-8">
+    <!-- Title and action buttons -->
+    <div class="flex items-center justify-between w-full">
+      <div>
+        <div class="text-3xl text-gray-500 font-semibold tracking-tight leading-8">
+          Analytics dashboard
+        </div>
+        <div class="font-medium tracking-tight text-gray-500">
+          Monitor metrics, check reports and review performance
+        </div>
+      </div>
+      <div class="flex items-center ml-6">
+        <button class="hidden sm:inline-flex" mat-flat-button [color]="'accent'">
+          <mat-icon class="icon-size-5">settings</mat-icon>
+          <span class="ml-2">Settings</span>
+        </button>
+        <button class="hidden sm:inline-flex ml-3" mat-flat-button [color]="'primary'">
+          <mat-icon class="icon-size-5">save</mat-icon>
+          <span class="ml-2">Export</span>
+        </button>
+
+        <!-- Actions menu (visible on xs) -->
+        <div class="sm:hidden">
+          <button [matMenuTriggerFor]="actionsMenu" mat-icon-button>
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #actionsMenu="matMenu">
+            <button mat-menu-item>Export</button>
+            <button mat-menu-item>Settings</button>
+          </mat-menu>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chart Number 1 -->
+    <div class="w-full mt-8">
+      <!-- Name of Chart:- Mean salary vs level of experience -->
+      <div class="sm:col-span-2 lg:col-span-3 dark flex flex-col flex-auto  shadow rounded-2xl overflow-hidden">
+        <div class="flex items-center justify-between mt-10 ml-10 mr-6 sm:mr-10">
+          <div class="flex flex-col">
+            <div class="mr-4 text-2xl md:text-3xl font-semibold tracking-tight leading-7">
+              MEAN SALARY VS EXPERIENCE
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col flex-auto h-70">
+          <mat-spinner *ngIf="!barChart1Data" class="mx-auto my-50"></mat-spinner>
+          <app-charts [chartType]="'bar-chart'" [chartData]="barChart1Data" *ngIf="barChart1Data"></app-charts>
+        </div>
+      </div>
+      <br><br>
+      <!-- Insights for chart One -->
+      <div class="shadow rounded-2xl overflow-hidden border" style="color: black;">
+        <div class="flex items-start justify-between m-6 mb-0">
+          <div class="text-lg font-medium tracking-tight leading-6 truncate">
+            ABOUT THE FIELD:- <br>
+            'Experience level' field has following possible values :<br>
+            * EN<br>
+            Entry-level / Junior<br>
+            * MI<br>
+            Mid-level / Intermediate<br>
+            * SE <br>
+            Senior-level / Expert<br>
+            * EX<br>
+            Executive-level / Director<br>
+            <br>
+            INSIGHTS FROM THE GRAPH:-<br>
+            Order of salary is :- EX>SE>MI>EN
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- Chart Number 2 -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full mt-6 md:mt-8">
+      <!-- Pie Chart 1 -->
+      <!-- Company Size -->
+      <div class="flex flex-col flex-auto bg-card shadow rounded-2xl overflow-hidden p-6">
+        <div class="flex items-start justify-between">
+          <div class="text-lg font-medium tracking-tight leading-6 truncate text-black">
+            Company Size
+          </div>
+        </div>
+        <div class="flex flex-col flex-auto mt-6 h-84">
+          <mat-spinner *ngIf="!pieChart1Data" class="mx-auto my-50"></mat-spinner>
+          <app-charts [chartType]="'pie-chart'" [chartData]="pieChart1Data" *ngIf="pieChart1Data"></app-charts>
+        </div>
+      </div>
+      <!-- Pie Chart Two -->
+      <!-- Remote Ratio -->
+      <div class="flex flex-col flex-auto bg-card shadow rounded-2xl overflow-hidden p-6">
+        <div class="flex items-start justify-between">
+          <div class="text-lg font-medium tracking-tight leading-6 truncate text-black">
+            Remote Ratio
+          </div>
+        </div>
+        <div class="flex flex-col flex-auto mt-6 h-24">
+          <mat-spinner *ngIf="!pieChart2Data" class="mx-auto my-50"></mat-spinner>
+          <app-charts [chartType]="'pie-chart'" [chartData]="pieChart2Data" *ngIf="pieChart2Data"></app-charts>
+        </div>
+      </div>
+
+      <!-- Insights for pie chart One -->
+      <div class="shadow rounded-2xl overflow-hidden border" style="color: black;">
+        <div class="flex items-start justify-between m-6 mb-0">
+          <div class="text-lg font-medium tracking-tight leading-6 truncate">
+            ABOUT THE FIELD:- <br>
+            Company_Size - Three categories of the size of companies<br>
+            * S - 50 employees, Small<br>
+            * M - 50 to 250 employees, Medium<br>
+            * L - Greater than 250, Large<br><br>
+            INSIGHTS FROM THE GRAPH:-<br>
+            We can learn that more than 50% of the employees are employed by large company <br>and others by medium and small compnie
+          </div>
+        </div>
+      </div>
+      <!-- Insights for pie chart Two -->
+      <div class="shadow rounded-2xl overflow-hidden border" style="color: black;">
+        <div class="flex items-start justify-between m-6 mb-0">
+          <div class="text-lg font-medium tracking-tight leading-6 truncate">
+            ABOUT THE FIELD:- <br>
+            'Remote Ration' field has following possible values :<br>
+            * 0 - None remote<br>
+            * 50 - Hybrid<br>
+            * 100 - Fully Remote<br><br>
+            INSIGHTS FROM THE GRAPH:-<br>
+            Over 62% of these workers are considered to be fully remote -<br>
+            which I believe may have spiked due to the recent changes in day-to-day lives after Covid
+            <br> 2020.
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chart Number 3 -->
+    <div class="w-full mt-8">
+      <!-- Name of Chart:- Mean salary vs level of experience -->
+      <div class="sm:col-span-2 lg:col-span-3 dark flex flex-col flex-auto  shadow rounded-2xl overflow-hidden">
+        <div class="flex items-center justify-between mt-10 ml-10 mr-6 sm:mr-10">
+          <div class="flex flex-col">
+            <div class="mr-4 text-2xl md:text-3xl font-semibold tracking-tight leading-7">
+              Top 5 Residence with highest salary paid
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col flex-auto h-70">
+          <mat-spinner *ngIf="!barChart2Data" class="mx-auto my-50"></mat-spinner>
+          <app-charts [chartType]="'bar-chart'" [chartData]="barChart2Data" *ngIf="barChart2Data"></app-charts>
+        </div>
+      </div>
+      <br><br>
+      <!-- Insights for chart One -->
+      <div class="shadow rounded-2xl overflow-hidden border" style="color: black;">
+        <div class="flex items-start justify-between m-6 mb-0">
+          <div class="text-lg font-medium tracking-tight leading-6 truncate">
+            ABOUT THE FIELD -<br>
+            employee_residence <br>
+            Employee's primary country of residence in during the work year <br>
+            There are 45 unique 'employee_residence' with US being most common , about 38% <br><br>
+            INSIGHTS FROM THE GRAPH - <br>
+            Out of 45 , top 5 high paying residences are -<br>
+            'US','PR','JP','NZ','RU'
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
