@@ -9,12 +9,18 @@ import plotly.express as px
 from flask_jwt_extended import jwt_required
 from flask_restful import Resource
 
+import sqlite3
+
+# Create your connection.
+cnx = sqlite3.connect('data.db')
+
+df = pd.read_sql_query("SELECT * FROM salaries", cnx)
 
 class BarChartOne(Resource):
-    df=pd.read_csv('Data Science Jobs Salaries.csv')
+
     @jwt_required()
     def get(self):
-        arr = np.array(self.df.groupby('experience_level').salary.median())
+        arr = np.array(df.groupby('experience_level').salary.median())
         y=[]
         for i in arr:
             y.append(i)
@@ -24,18 +30,16 @@ class BarChartOne(Resource):
         return {"x":exp_lev,"y":y}
 
 class BarChartTwo(Resource):
-    df=pd.read_csv('Data Science Jobs Salaries.csv')
     @jwt_required()
     def get(self):
-        res = self.df.groupby('employee_residence').salary_in_usd.mean().sort_values(ascending=False)
+        res = df.groupby('employee_residence').salary_in_usd.mean().sort_values(ascending=False)
         res = res.head()
         return {"x":list(res.index),"y":list(res.values)}
 
 class PieChartOne(Resource):
-    df=pd.read_csv('Data Science Jobs Salaries.csv')
     @jwt_required()
     def get(self):
-        coms = np.array(self.df['company_size'].value_counts(sort=True))
+        coms = np.array(df['company_size'].value_counts(sort=True))
         print(coms)
         y=[]
         for i in coms:
@@ -50,10 +54,9 @@ class PieChartOne(Resource):
 
 
 class PieChartTwo(Resource):
-    df=pd.read_csv('Data Science Jobs Salaries.csv')
     @jwt_required()
     def get(self):
-        remo = np.array(self.df['remote_ratio'].value_counts(sort=True))
+        remo = np.array(df['remote_ratio'].value_counts(sort=True))
         y=[]
         for i in remo:
             print(type(float(i)))

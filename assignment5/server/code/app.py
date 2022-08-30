@@ -1,10 +1,11 @@
+import imp
 import os
 from datetime import timedelta
-
 from flask import Flask
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
 from flask_restful import Api
+
 
 from db import db
 from resources.charts_resource import (
@@ -30,6 +31,7 @@ app.config['JWT_EXPIRATION_DELTA'] = timedelta(seconds=1800)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']= False
 app.config['SQLALCHEMY_DATABASE_URI'] =  os.environ.get('DATABASE_URI', 'sqlite:///data.db')
 
+
 # api endpoint for customer signing in the site for the first time
 api.add_resource(UserSignUp,'/signup')
 
@@ -53,4 +55,4 @@ api.add_resource(PieChartTwo,'/piecharttwo')
 
 if __name__=='__main__':
     db.init_app(app)
-    app.run(port=5000, debug=True)
+    app.run(port=5000,debug=True)
